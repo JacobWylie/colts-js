@@ -3,15 +3,17 @@ A reserved JavaSctipt keyword <br>
 Determined by execution context <br>
 Determined using four rules (global, object/implicit, explicit, new) <br>
 
+
 1. [Global Context](#globalcontext)
-  1. [Global Object](#globalobject)
-  2. [Strict Mode](#strictmode)
+    1. [Global Object](#globalobject)
+    2. [Strict Mode](#strictmode)
 2. [Implicit Objects](#implicitobject)
 3. [Nested Objects](#nestedobjects)
 4. [Explicit Binding](#explicitbinding)
 5. [Fixing up with Call](#fixingcall)
 6. [Using Call in the Wild](#callwild)
 7. [What about Apply?](#apply)
+
 
 <hr>
 <h2 id="globalcontext">Global Context</h2>
