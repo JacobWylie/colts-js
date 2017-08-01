@@ -3,8 +3,8 @@ A reserved JavaSctipt keyword <br>
 Determined by execution context <br>
 Determined using four rules (global, object/implicit, explicit, new) <br>
 <br>
-1. Global Context(#globalcontext)
-    1. Global Object(#globalobject)
+1. [Global Context](#globalcontext)
+    1. [Global Object](#globalobject)
     2. <a href="#strictmode">Strict Mode</a>
 2. <a href="#implicitobject">Implicit Objects</a>
 3. <a href="#nestedobjects">Nested Objects</a>
