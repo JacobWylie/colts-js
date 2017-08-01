@@ -1,3 +1,3 @@
 # Colt's Intermediate JavaScript
 
-<a href="this.md"><li>This</li></a>
+[1. This](this.md) 
