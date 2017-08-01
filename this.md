@@ -101,7 +101,7 @@ person.sayHi(); // "Hi Colt"
 person.determineContext(); // true
 
 // But what is the value of the keyword this now?
-person.dog.sayHello(); // Hello undefined
+person.dog.sayHello(); // "Hello undefined"
 person.dog.determineContext(); // false
 
 ```
@@ -109,7 +109,7 @@ person.dog.determineContext(); // false
 <h2>Explicit Binding</h2>
 Choose what we want the context of 'this' to be using call, apply, or bind <br>
 These methods can only be used by functions <br>
-
+<br>
 <table>
 	<tr>
 		<th>Name of Method</th>
@@ -121,15 +121,100 @@ These methods can only be used by functions <br>
 		<td>thisArg a,b,c,d,...</td>
 		<td>Yes</td>
 	</tr>
+	<tr>
+		<td>Apply</td>
+		<td>thisArg,[a,b,c,d,...]</td>
+		<td>Yes</td>
+	</tr>
+	<tr>
+		<td>Bind</td>
+		<td>thisArg,a,b,c,d,...</td>
+		<td>No</td>
+	</tr>
 </table>
 
+<h2>Fixing up With Call</h2>
 
+```javascript
 
+let person = {
+	firstName: "Colt",
+	sayHi: function() {
+		return `Hi ${this.firstName}`;
+	},
+	determineContext: function() {
+		return this === person;
+	},
+	dog: {
+		sayHello: function() {
+			return `Hello ${this.firstName}`;
+		},
+		determineContext: function() {
+			return this === person;
+		}	
+	}
+}
 
+person.sayHi(); // "Hi Colt"
+person.determineContext(); // true
 
+person.dog.sayHello.call(person); // "Hello Colt"
+person.dog.determineContext.call(person); // true
 
+// Using call worked! Notice that we do NOT invoke sayHello or determineContext method
 
+```
 
+<h2>Using Call in the Wild</h2>
+Let's examine a very common use case
+
+```javascript
+
+let colt = {
+	firstName: "Colt",
+	sayHi: function() {
+		return `Hi ${this.firstName}`;
+	}
+}
+
+let elie = {
+	firstName: "Elie",
+	// Look at all this duplication :(
+	sayHi: function() {
+		return `Hi ${this.firstName}`;
+	}
+}
+
+colt.sayHi(); // "Hi Colt"
+elie.sayHi(); // "Hi Elie" (But we had to copy and paster the function from above...)
+
+// How can we refactor the duplication using call?
+
+// How can we "borrow" the sayHi function from colt
+// and set the value of 'this' to be elie?
+
+```
+<h5>Solution</h5>
+
+```javascript
+
+let colt = {
+	firstName: "Colt",
+	sayHi: function() {
+		return `Hi ${this.firstName}`;
+	}
+}
+
+let elie = {
+	firstName: "Elie"
+}
+
+colt.sayHi(); // "Hi Colt"
+colt.sayHi.call(elie) // "Hi Elie"
+
+// Much better!
+
+```
 
 
 
