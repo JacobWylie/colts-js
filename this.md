@@ -110,10 +110,18 @@ person.dog.determineContext(); // false
 Choose what we want the context of 'this' to be using call, apply, or bind <br>
 These methods can only be used by functions <br>
 
- Name of Method | Parameters        | Invoke Immediately? <br>
-----------------|-------------------|--------------------- <br>
- Call           | thisArg a,b,c,... | Yes
-
+<table>
+	<tr>
+		<th>Name of Method</th>
+		<th>Parameters</th>
+		<th>Invoke Immediately?</th>
+	</tr>
+	<tr>
+		<td>Call</td>
+		<td>thisArg a,b,c,d,...</td>
+		<td>Yes</td>
+	</tr>
+</table>
 
 
 
