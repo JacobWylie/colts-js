@@ -2,7 +2,7 @@
 A reserved JavaSctipt keyword <br>
 Determined by execution context <br>
 Determined using four rules (global, object/implicit, explicit, new) <br>
-
+<br>
 
 1. [Global Context](#globalcontext)
     1. [Global Object](#globalobject)
