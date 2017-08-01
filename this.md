@@ -1,7 +1,7 @@
 <h1>This</h1>
-A reserved JavaSctipt keyword <br>
-Determined by execution context <br>
-Determined using four rules (global, object/implicit, explicit, new) <br>
+- A reserved JavaSctipt keyword 
+- Determined by execution context
+- Determined using four rules (global, object/implicit, explicit, new)
 <br>
 
 1. [Global Context](#globalcontext)
