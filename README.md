@@ -1,1 +1,1 @@
-# colts-js
+# Colt's Intermediate JavaScript
