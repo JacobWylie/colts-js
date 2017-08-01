@@ -1,26 +1,137 @@
 <h1>This</h1>
-<li>Reserved JavaSctiptKeyword
-<li>Determined by execution context</li>
-<li>Determined using four rules (global, object/implicit, explicit, new)</li>
+- Reserved JavaSctiptKeyword
+- Determined by execution context
+- Determined using four rules (global, object/implicit, explicit, new)
 
+<h2>Global Context</h2>
 <h3>The browser's global object is the window</h3>
 
 ```javascript
 
-console.log(this) //window
+console.log(this); // window
 
 function whatIsThis() {
-	return this
+	return this;
 }
 
 function variablesInThis() {
 	// since the value of this is the window
 	// all we are doing here is creating a global variable
-	this.person = "Ellie"
+	this.person = "Ellie";
 }
 
-console.log(person) //Ellie
+console.log(person); // Ellie
 
-whatIsThis() // window
+whatIsThis(); // window
 
 ```
+
+<h3>Strict Mode</h3>
+When we enable strict mode and we are not inside a declared object
+
+```javascript
+
+"use strict"
+
+console.log(this); // window
+
+function whitIsThis() {
+	return this;
+}
+
+function variablesInThis() {
+	// since we are in strict mode this is undefined
+	// so what happens if we add a property on undefined?
+	// let's see what happens when we call the function ...
+	this.person = "Elie";
+}
+
+variableInThis(); // TypeError, can't set person on undefined
+
+whatIsThis() // undefined
+
+```
+
+<h2>Implicit/Object</h2>
+When the keyword 'this' IS inside of a declared object
+
+```javascript
+
+// strict mode does NOT make a difference here
+
+let person = {
+	firstName: "Ellie",
+	sayHi: function() {
+		return `Hi ${this.firstName}`;
+	},
+	determineContext: function() {
+		return this === person
+	}
+}
+
+person.sayHi(); // "Hi Ellie"
+person.determineContext() // true
+
+```
+
+<h2>Nested Object</h2>
+What happens when we have a nested object?
+
+```javascript
+
+let person = {
+	firstName: "Colt",
+	sayHi: function() {
+		return `Hi ${this.firstName}`;
+	},
+	determineContext: function() {
+		return this === person;
+	},
+	dog: {
+		sayHello: function() {
+			return `Hello ${this.firstName}`;
+		},
+		determineContext: function() {
+			return this === person;
+		}	
+	}
+}
+
+person.sayHi(); // "Hi Colt"
+person.determineContext(); // true
+
+// But what is the value of the keyword this now?
+person.dog.sayHello(); // Hello undefined
+person.dog.determineContext(); // false
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
