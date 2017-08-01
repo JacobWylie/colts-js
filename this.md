@@ -1,7 +1,7 @@
 <h1>This</h1>
-- Reserved JavaSctiptKeyword
-- Determined by execution context
-- Determined using four rules (global, object/implicit, explicit, new)
+A reserved JavaSctipt keyword <br>
+Determined by execution context <br>
+Determined using four rules (global, object/implicit, explicit, new) <br>
 
 <h2>Global Context</h2>
 <h3>The browser's global object is the window</h3>
@@ -105,6 +105,15 @@ person.dog.sayHello(); // Hello undefined
 person.dog.determineContext(); // false
 
 ```
+
+<h2>Explicit Binding</h2>
+Choose what we want the context of 'this' to be using call, apply, or bind <br>
+These methods can only be used by functions <br>
+
+ Name of Method | Parameters        | Invoke Immediately? <br>
+----------------|-------------------|--------------------- <br>
+ Call           | thisArg a,b,c,... | Yes
+
 
 
 
