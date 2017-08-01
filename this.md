@@ -2,9 +2,20 @@
 A reserved JavaSctipt keyword <br>
 Determined by execution context <br>
 Determined using four rules (global, object/implicit, explicit, new) <br>
-
-<h2>Global Context</h2>
-<h3>The browser's global object is the window</h3>
+<br>
+1. <a href="#globalcontext">Global Context</a>
+	1. <a href="#globalobject">Global Object</a>
+	2. <a href="#strictmode">Strict Mode</a>
+2. <a href="#implicitobject">Implicit Objects</a>
+3. <a href="#nestedobjects">Nested Objects</a>
+4. <a href="#explicitbinding">Explicit Binding</a>
+5. <a href="#fixingcall">Fixing up with Call</a>
+6. <a href="#callwild">Using Call in the Wild</a>
+7. <a href="#apply">What about Apply?</a>
+<br>
+<hr>
+<h2 id="globalcontext">Global Context</h2>
+<h3 id="globalobject">The browser's global object is the window</h3>
 
 ```javascript
 
@@ -26,8 +37,9 @@ whatIsThis(); // window
 
 ```
 
-<h3>Strict Mode</h3>
+<h3 id="strictmode">Strict Mode</h3>
 When we enable strict mode and we are not inside a declared object
+<br>
 
 ```javascript
 
@@ -52,8 +64,9 @@ whatIsThis() // undefined
 
 ```
 
-<h2>Implicit/Object</h2>
+<h2 id="implicitobject">Implicit/Object</h2>
 When the keyword 'this' IS inside of a declared object
+<br>
 
 ```javascript
 
@@ -74,8 +87,9 @@ person.determineContext() // true
 
 ```
 
-<h2>Nested Object</h2>
+<h2 id="nestedobjects">Nested Object</h2>
 What happens when we have a nested object?
+<br>
 
 ```javascript
 
@@ -106,7 +120,7 @@ person.dog.determineContext(); // false
 
 ```
 
-<h2>Explicit Binding</h2>
+<h2 id="explicitbinding">Explicit Binding</h2>
 Choose what we want the context of 'this' to be using call, apply, or bind <br>
 These methods can only be used by functions <br>
 <br>
@@ -133,7 +147,7 @@ These methods can only be used by functions <br>
 	</tr>
 </table>
 
-<h2>Fixing up With Call</h2>
+<h2 id="fixingcall">Fixing up with Call</h2>
 
 ```javascript
 
@@ -165,8 +179,9 @@ person.dog.determineContext.call(person); // true
 
 ```
 
-<h2>Using Call in the Wild</h2>
+<h2 id="callwild">Using Call in the Wild</h2>
 Let's examine a very common use case
+<br>
 
 ```javascript
 
@@ -194,6 +209,7 @@ elie.sayHi(); // "Hi Elie" (But we had to copy and paster the function from abov
 // and set the value of 'this' to be elie?
 
 ```
+
 <h5>Solution</h5>
 
 ```javascript
@@ -215,6 +231,13 @@ colt.sayHi.call(elie) // "Hi Elie"
 // Much better!
 
 ```
+
+<h2 id="apply">What about Apply?</h2>
+It's almost identical to call - except the parameters!
+<br>
+
+```javascript
+
 
 
 
