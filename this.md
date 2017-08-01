@@ -4,14 +4,14 @@ Determined by execution context <br>
 Determined using four rules (global, object/implicit, explicit, new) <br>
 <br>
 1. [Global Context](#globalcontext)
-    1. [Global Object](#globalobject)
-    2. <a href="#strictmode">Strict Mode</a>
-2. <a href="#implicitobject">Implicit Objects</a>
-3. <a href="#nestedobjects">Nested Objects</a>
-4. <a href="#explicitbinding">Explicit Binding</a>
-5. <a href="#fixingcall">Fixing up with Call</a>
-6. <a href="#callwild">Using Call in the Wild</a>
-7. <a href="#apply">What about Apply?</a>
+  1. [Global Object](#globalobject)
+  2. [Strict Mode](#strictmode)
+2. [Implicit Objects](#implicitobject)
+3. [Nested Objects](#nestedobjects)
+4. [Explicit Binding](#explicitbinding)
+5. [Fixing up with Call](#fixingcall)
+6. [Using Call in the Wild](#callwild)
+7. [What about Apply?](#apply)
 <br>
 <hr>
 <h2 id="globalcontext">Global Context</h2>
