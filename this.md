@@ -2,7 +2,7 @@
 A reserved JavaSctipt keyword <br>
 Determined by execution context <br>
 Determined using four rules (global, object/implicit, explicit, new) <br>
-<br>
+
 1. [Global Context](#globalcontext)
   1. [Global Object](#globalobject)
   2. [Strict Mode](#strictmode)
@@ -12,7 +12,7 @@ Determined using four rules (global, object/implicit, explicit, new) <br>
 5. [Fixing up with Call](#fixingcall)
 6. [Using Call in the Wild](#callwild)
 7. [What about Apply?](#apply)
-<br>
+
 <hr>
 <h2 id="globalcontext">Global Context</h2>
 <h3 id="globalobject">The browser's global object is the window</h3>
