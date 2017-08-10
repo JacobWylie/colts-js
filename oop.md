@@ -22,19 +22,14 @@
 2. [The 'new' Keyword](#new)
     1. [Our solution to the problem!](#new-solution)
     2. [Your Turn!](#new-turn)
-3. [Nested Objects](#nestedobjects)
-4. [Explicit Binding](#explicitbinding)
-5. [Fixing up with Call](#fixingcall)
-6. [Using Call in the Wild](#callwild)
-7. [What About Apply?](#apply)
-8. [And What About Bind?](#bind)
-9. [Bind in the Wild](#bind-2)
-10. [The 'new' Keyword](#new)
-11. [Recap](#recap)
+3. [Multiple Constructors](#mulitple-constructors)
+    1. [Using call/apply](#call-apply)
+4. [Recap](#recap)
 
 
 <hr>
 <br>
+
 
 <h2 id="oop">OOP in Javascript</h2>
 
@@ -184,7 +179,84 @@ fido.bark() // Fido just barked!
 <br>
 
 
-<h2></h2>
+<h2 id="multiple-constructors">Multiple Constructors</h2>
+
+Let's create two constructor functions, one for a Car and one for a Motorcycle = here is what it might look like
+
+```javascript
+
+function Car(make, model, year) {
+	this.make = make;
+	this.model = model;
+	this.year = year;
+	// we can also set properties on the keyword this that are preset values
+	this.numWheels = 4
+}
+
+function Motorcycle(make, model, year) {
+	this.make = make;
+	this.model = model;
+	this.year = year;
+	this.numWheels = 2
+}
+
+```
+
+Notice how much duplication is going on in the Motorcycle function. Is there any way to 'borrow' the Car function and invoke it inside the Motorcycle function?
+<br>
+
+<h3 id="call-apply">Using call/apply</h3>
+
+We can refactor our code quite a bit using call + apply
+
+```javascript
+
+function Car(make, model, year) {
+	this.make = make;
+	this.model = model;
+	this.year = year;
+	// we can also set properties on the keyword this that are preset values
+	this.numWheels = 4
+}
+
+// Using call
+
+function Motorcycle(make, model, year) {
+	Car.call(this, make, model, year)
+	this.numWheels = 2;
+}
+
+// Using apply
+
+function Motorcycle(make, model, year) {
+	Car.apply(this, [make, model, year])
+	this.numWheels = 2;
+}
+
+// Even better using apply with arguments
+
+function Motorcycle(make, model, year) {
+	Car.apply(this, arguments)
+	this.numWheels = 2;
+}
+
+```
+<br>
+<br>
+
+
+<h2 id="recap">Recap</h2>
+
+<li>Object Orientated Programming is a model based on objects constructed from a blueprint. W use OOP to write more modular and shareable code</li>
+<li>In languages that have built-in support for OOP, we call these blueprints 'classes' and the objects created from them 'instances'</li>
+<li>Since we do not have built-in class support in JavaScript, we mimic classes by using functions. These constructor functions create objects through the use of the new keyword</li>
+<li>We can avoid duplication in multiple constructor functions by using call or apply</li>
+<br>
+<br>
+
+
+
+
 
 
 
