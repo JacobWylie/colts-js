@@ -3,7 +3,7 @@
 <li> Determined by execution context </li>
 <li> Determined using four rules (global, object/implicit, explicit, new) </li>
 <br>
-
+<h3>Contents</h3>
 1. [Global Context](#globalcontext)
     1. [Global Object](#globalobject)
     2. [Strict Mode](#strictmode)
@@ -43,7 +43,7 @@ whatIsThis(); // window
 <h3 id="strictmode">Strict Mode</h3>
 When we enable strict mode and we are not inside a declared object
 <br>
-
+<br>
 
 ```javascript
 
@@ -68,12 +68,13 @@ whatIsThis() // undefined
 
 ```
 <br>
+<br>
 
 
 <h2 id="implicitobject">Implicit/Object</h2>
 When the keyword 'this' IS inside of a declared object
 <br>
-
+<br>
 
 ```javascript
 
@@ -94,12 +95,13 @@ person.determineContext() // true
 
 ```
 <br>
+<br>
 
 
 <h2 id="nestedobjects">Nested Object</h2>
 What happens when we have a nested object?
 <br>
-
+<br>
 
 ```javascript
 
@@ -159,6 +161,7 @@ These methods can only be used by functions <br>
 	</tr>
 </table>
 <br>
+<br>
 
 
 <h2 id="fixingcall">Fixing up with Call</h2>
@@ -193,10 +196,13 @@ person.dog.determineContext.call(person); // true
 
 ```
 <br>
+<br>
 
 
 <h2 id="callwild">Using Call in the Wild</h2>
 Let's examine a very common use case
+<br>
+<br>
 
 ```javascript
 
@@ -248,12 +254,13 @@ colt.sayHi.call(elie) // "Hi Elie"
 
 ```
 <br>
+<br>
 
 
 <h2 id="apply">What about Apply?</h2>
 It's almost identical to call - except the parameters!
 <br>
-
+<br>
 
 ```javascript
 
