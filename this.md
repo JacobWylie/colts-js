@@ -1,8 +1,17 @@
 <h1>Keyword 'This'</h1>
+
+<h3>Objectives</h3>
+<li> Define what the keyword 'this' is</li>
+<li> Understand the four ways to always figure out what the keyword 'this' is</li>
+<li> Try as hard as possible not to use the word 'this' in a sentence</li>
+<br>
+
+<h3>So what is 'this'</h3>
 <li> A reserved JavaSctipt keyword </li>
 <li> Determined by execution context </li>
 <li> Determined using four rules (global, object/implicit, explicit, new) </li>
 <br>
+
 <h3>Contents</h3>
 
 1. [Global Context](#globalcontext)
