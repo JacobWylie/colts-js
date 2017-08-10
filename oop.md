@@ -18,7 +18,10 @@
 1. [OOP in JavaScript](#oop)
     1. [Object Creation](#object-creation)
     2. [Constructor Functions](#constructor-functions)
+    3. [Creating an Object](#create-object)
 2. [The 'new' Keyword](#new)
+    1. [Our solution to the problem!](#new-solution)
+    2. [Your Turn!](#new-turn)
 3. [Nested Objects](#nestedobjects)
 4. [Explicit Binding](#explicitbinding)
 5. [Fixing up with Call](#fixingcall)
@@ -73,7 +76,7 @@ const house = {
 // woof...imagine if we had to make 100 of these
 
 ```
-<br>
+
 <h3>A Solution</h3>
 
 Instead of making an infinite number of different objects, let's see if we can create a function to construct these similiar 'house' objects.
@@ -94,14 +97,13 @@ function House(bedrooms, bathrooms, numSqft) {
 
 ```
 
-Notice a few things...
-
+<h4>Notice a few things...</h4>
 <li>Capitalization of the function name - this is convention!</li>
 <li>The keyword 'this' is back!</li>
 <li>We are attaching properties onto the keyword 'this'. We would like the keyword 'this' to refer to the object we will create from our constructor function, how might we do that?</li>
 <br>
 
-<h3>Creating an Object</h3>
+<h3 id="create-object">Creating an Object</h3>
 
 So how do we use our constructor to actually construct objects?
 
@@ -118,17 +120,16 @@ firsthouse // undefined...guess not!
 
 ```
 
-Why is this not working?
-
+<h4>Why is this not working?</h4>
 <li>We are not returning anything from the function so our House function returns undefined</li>
 <li>We are not explicitly binding the keyword 'this' or placing it inside a declared object. This means the value of the keyword 'this' will be the global object, which is not what we want!</li>
 <br>
-
+<br>
 
 
 <h2 id="new">The 'new' Keyword</h2>
 
-<h3>Our solution to the problem!</h3>
+<h3 id="new-solution">Our solution to the problem!</h3>
 <br>
 
 ```javascript
@@ -146,15 +147,14 @@ firstHouse.numSqft // 2
 
 ```
 
-So what does the new keyword do? A lot more than we might think...
-
+<h4>So what does the new keyword do? A lot more than we might think...</h4>
 <li>It creates an empty object</li>
 <li>It then sets the keyword 'this' to be that empty object</li>
 <li>It adds the line 'return this' to the end of the function, which follows it</li>
 <li>It adds a property onto the empty object called "_proto_", which links the prototype property on the constructor function to the empty object (more on this later)</li>
 <br>
 
-<h3>Your Turn!</h3>
+<h3 id="new-turn">Your Turn!</h3>
 
 Create a constructor function for a Dog - each dog should have a name and an age. As a bonus, add a function for each dog called 'bark', which console.log's the name of the dog added to the string 'just barked!'
 <br>
@@ -166,7 +166,9 @@ Create a constructor function for a Dog - each dog should have a name and an age
 function Dog(name, age) {
 	this.name = name;
 	this.age = age;
-	this.
+	this.bark = function() {
+		console.log(`${this.name} just barked`)
+	}
 }
 
 // This code should work if you have implemented it correctly
@@ -177,6 +179,12 @@ const fido = new Dog('Fido', 1);
 rusty.bark() // Rusty just barked!
 fido.bark() // Fido just barked!
 
+```
+<br>
+<br>
+
+
+<h2></h2>
 
 
 
