@@ -26,21 +26,21 @@
 
 ```javascript
 
-console.log(this); // window
+console.log(this) // window
 
 function whatIsThis() {
-	return this;
+	return this
 }
 
 function variablesInThis() {
 	// since the value of this is the window
 	// all we are doing here is creating a global variable
-	this.person = "Ellie";
+	this.person = "Ellie"
 }
 
-console.log(person); // Ellie
+console.log(person) // Ellie
 
-whatIsThis(); // window
+whatIsThis() // window
 
 ```
 
@@ -54,20 +54,20 @@ When we enable strict mode and we are not inside a declared object
 
 "use strict"
 
-console.log(this); // window
+console.log(this) // window
 
 function whitIsThis() {
-	return this;
+	return this
 }
 
 function variablesInThis() {
 	// since we are in strict mode this is undefined
 	// so what happens if we add a property on undefined?
 	// let's see what happens when we call the function ...
-	this.person = "Elie";
+	this.person = "Elie"
 }
 
-variableInThis(); // TypeError, can't set person on undefined
+variableInThis() // TypeError, can't set person on undefined
 
 whatIsThis() // undefined
 
@@ -88,14 +88,14 @@ When the keyword 'this' IS inside of a declared object
 const person = {
 	firstName: "Ellie",
 	sayHi: function() {
-		return `Hi ${this.firstName}`;
+		return `Hi ${this.firstName}`
 	},
 	determineContext: function() {
 		return this === person
 	}
 }
 
-person.sayHi(); // "Hi Ellie"
+person.sayHi() // "Hi Ellie"
 person.determineContext() // true
 
 ```
@@ -113,14 +113,14 @@ What happens when we have a nested object?
 const person = {
 	firstName: "Colt",
 	sayHi: function() {
-		return `Hi ${this.firstName}`;
+		return `Hi ${this.firstName}`
 	},
 	determineContext: function() {
 		return this === person;
 	},
 	dog: {
 		sayHello: function() {
-			return `Hello ${this.firstName}`;
+			return `Hello ${this.firstName}`
 		},
 		determineContext: function() {
 			return this === person;
@@ -128,12 +128,12 @@ const person = {
 	}
 }
 
-person.sayHi(); // "Hi Colt"
-person.determineContext(); // true
+person.sayHi() // "Hi Colt"
+person.determineContext() // true
 
 // But what is the value of the keyword this now?
-person.dog.sayHello(); // "Hello undefined"
-person.dog.determineContext(); // false
+person.dog.sayHello() // "Hello undefined"
+person.dog.determineContext() // false
 
 ```
 <br>
@@ -176,26 +176,26 @@ These methods can only be used by functions <br>
 const person = {
 	firstName: "Colt",
 	sayHi: function() {
-		return `Hi ${this.firstName}`;
+		return `Hi ${this.firstName}`
 	},
 	determineContext: function() {
-		return this === person;
+		return this === person
 	},
 	dog: {
 		sayHello: function() {
-			return `Hello ${this.firstName}`;
+			return `Hello ${this.firstName}`
 		},
 		determineContext: function() {
-			return this === person;
+			return this === person
 		}	
 	}
 }
 
-person.sayHi(); // "Hi Colt"
-person.determineContext(); // true
+person.sayHi() // "Hi Colt"
+person.determineContext() // true
 
-person.dog.sayHello.call(person); // "Hello Colt"
-person.dog.determineContext.call(person); // true
+person.dog.sayHello.call(person) // "Hello Colt"
+person.dog.determineContext.call(person) // true
 
 // Using call worked! Notice that we do NOT invoke sayHello or determineContext method
 
@@ -214,7 +214,7 @@ Let's examine a very common use case
 const colt = {
 	firstName: "Colt",
 	sayHi: function() {
-		return `Hi ${this.firstName}`;
+		return `Hi ${this.firstName}`
 	}
 }
 
@@ -222,22 +222,22 @@ const elie = {
 	firstName: "Elie",
 	// Look at all this duplication :(
 	sayHi: function() {
-		return `Hi ${this.firstName}`;
+		return `Hi ${this.firstName}`
 	}
 }
 
-colt.sayHi(); // "Hi Colt"
-elie.sayHi(); // "Hi Elie" (But we had to copy and paster the function from above...)
+colt.sayHi() // "Hi Colt"
+elie.sayHi() // "Hi Elie" (But we had to copy and paster the function from above...)
 
 // How can we refactor the duplication using call?
 
 // How can we "borrow" the sayHi function from colt and set the value of 'this' to be elie?
 
 ```
+<br>
 
 
 Solution
-<br>
 <br>
 
 ```javascript
@@ -245,7 +245,7 @@ Solution
 const colt = {
 	firstName: "Colt",
 	sayHi: function() {
-		return `Hi ${this.firstName}`;
+		return `Hi ${this.firstName}`
 	}
 }
 
@@ -253,7 +253,7 @@ const elie = {
 	firstName: "Elie"
 }
 
-colt.sayHi(); // "Hi Colt"
+colt.sayHi() // "Hi Colt"
 colt.sayHi.call(elie) // "Hi Elie"
 
 // Much better!
@@ -273,10 +273,10 @@ It's almost identical to call - except the parameters!
 const colt = {
 	firstName: "Colt",
 	sayHi: function() {
-		return `Hi ${this.firstName}`;
+		return `Hi ${this.firstName}`
 	},
 	addNumbers: function(a, b, c, d) {
-		return `${this.firstName} just calculated ${a + b + c + d}`;
+		return `${this.firstName} just calculated ${a + b + c + d}`
 	}
 }
 
@@ -308,10 +308,10 @@ The parameters work like call, but bind returns a function with the context of '
 const colt = {
 	firstName: 'Colt',
 	sayHi: function() {
-		return `Hi ${this.firstName}`;
+		return `Hi ${this.firstName}`
 	},
 	addNumbers: function(a, b, c, d) {
-		return `${this.firstName} just calculated ${a + b + c + d}`;
+		return `${this.firstName} just calculated ${a + b + c + d}`
 	}
 }
 
@@ -319,13 +319,13 @@ const elie = {
 	firstName: 'Elie'
 }
 
-const elieCalc = colt.addNumbers.bind(elie, 1, 2, 3, 4); // function() {}...
-elieCalc(); // Elie just calculated 10
+const elieCalc = colt.addNumbers.bind(elie, 1, 2, 3, 4) // function() {}...
+elieCalc() // Elie just calculated 10
 
 // With bind - we do not need to know all the arguments up front!
 
 const elieCalc2 = colt.addNumbers.bind(elie, 1, 2); // function() {}...
-elieCalc2(3, 4); // Elie just calculated 10
+elieCalc2(3, 4) // Elie just calculated 10
 
 ```
 <br>
@@ -343,18 +343,17 @@ const colt = {
 	firstName: 'Colt',
 	sayHi: function() {
 		setTimeout(function() {
-			console.log(`Hi ${this.firstName`);
+			console.log(`Hi ${this.firstName`)
 		}, 1000)
 	}
 }
 
-colt.sayHi(); // Hi undefined (1000 milliseconds later)
+colt.sayHi() // Hi undefined (1000 milliseconds later)
 // setTimeout() is a window method so 'this' is in the global scope
 
 ```
 
 Use bind to set the correct context of 'this'
-<br>
 <br>
 
 ```javascript
@@ -363,12 +362,12 @@ const colt = {
 	firstName: 'Colt',
 	sayHi: function() {
 		setTimeout(function() {
-			console.log(`Hi ${this.firstName`);
+			console.log(`Hi ${this.firstName`)
 		}.bind(this), 1000)
 	}
 }
 
-colt.sayHi(); // Hi Colt (1000 milliseconds later)
+colt.sayHi() // Hi Colt (1000 milliseconds later)
 
 ```
 
