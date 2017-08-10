@@ -13,14 +13,34 @@
 <li> We strive to make our classes abstract and modular</li>
 <br>
 
-<h3>OOP in Javascript</h3>
+<h3>Contents</h3>
+
+1. [OOP in JavaScript](#oop)
+    1. [Object Creation](#object-creation)
+    2. [Constructor Functions](#constructor-functions)
+2. [The 'new' Keyword](#new)
+3. [Nested Objects](#nestedobjects)
+4. [Explicit Binding](#explicitbinding)
+5. [Fixing up with Call](#fixingcall)
+6. [Using Call in the Wild](#callwild)
+7. [What About Apply?](#apply)
+8. [And What About Bind?](#bind)
+9. [Bind in the Wild](#bind-2)
+10. [The 'new' Keyword](#new)
+11. [Recap](#recap)
+
+
+<hr>
+<br>
+
+<h2 id="oop">OOP in Javascript</h2>
 
 But JavaScript does not have 'classes' built into it - so what do we do?
-
 We use functions and objects!
 <br>
 
-<h3>Object Creation</h3>
+
+<h3 id="object-creation">Object Creation</h3>
 
 Imagine we want to make a few house objects, they will all have bedrooms, bathrooms, and numSqft
 
@@ -54,13 +74,13 @@ const house = {
 
 ```
 <br>
-
 <h3>A Solution</h3>
 
 Instead of making an infinite number of different objects, let's see if we can create a function to construct these similiar 'house' objects.
 <br>
 
-<h3>Constructor Functions</h3>
+
+<h3 id="constructor-functions">Constructor Functions</h3>
 
 Let's use a function as a blueprint for what each house should be - we call these kinds of functions 'constructor' functions
 
@@ -93,7 +113,7 @@ function House(bedrooms, bathrooms, numSqft) {
 	this.numSqft = numSqft;
 }
 
-const firstHouse = House(2, 2, 1000) // does this work?
+const firstHouse = House(2, 2, 1000); // does this work?
 firsthouse // undefined...guess not!
 
 ```
@@ -102,27 +122,84 @@ Why is this not working?
 
 <li>We are not returning anything from the function so our House function returns undefined</li>
 <li>We are not explicitly binding the keyword 'this' or placing it inside a declared object. This means the value of the keyword 'this' will be the global object, which is not what we want!</li>
-
-<h3>Contents</h3>
-
-1. [Global Context](#globalcontext)
-    1. [Global Object](#globalobject)
-    2. [Strict Mode](#strictmode)
-2. [Implicit Objects](#implicitobject)
-3. [Nested Objects](#nestedobjects)
-4. [Explicit Binding](#explicitbinding)
-5. [Fixing up with Call](#fixingcall)
-6. [Using Call in the Wild](#callwild)
-7. [What About Apply?](#apply)
-8. [And What About Bind?](#bind)
-9. [Bind in the Wild](#bind-2)
-10. [The 'new' Keyword](#new)
-11. [Recap](#recap)
-
-
-<hr>
 <br>
-<h2 id="globalcontext">Global Context</h2>
-<h3 id="globalobject">The browser's global object is the window</h3>
+
+
+
+<h2 id="new">The 'new' Keyword</h2>
+
+<h3>Our solution to the problem!</h3>
+<br>
 
 ```javascript
+
+function House(bedrooms, bathrooms, numSqft) {
+	this.bedrooms = bedrooms;
+	this.bathrooms = bathrooms;
+	this.numSqft = numSqft;
+}
+
+const firstHouse = new House(2, 2, 1000);
+firstHouse.bedrooms // 2
+firstHouse.bathrooms // 2
+firstHouse.numSqft // 2
+
+```
+
+So what does the new keyword do? A lot more than we might think...
+
+<li>It creates an empty object</li>
+<li>It then sets the keyword 'this' to be that empty object</li>
+<li>It adds the line 'return this' to the end of the function, which follows it</li>
+<li>It adds a property onto the empty object called "_proto_", which links the prototype property on the constructor function to the empty object (more on this later)</li>
+<br>
+
+<h3>Your Turn!</h3>
+
+Create a constructor function for a Dog - each dog should have a name and an age. As a bonus, add a function for each dog called 'bark', which console.log's the name of the dog added to the string 'just barked!'
+<br>
+
+```javascript
+
+// Your constructor function goes here
+
+function Dog(name, age) {
+	this.name = name;
+	this.age = age;
+	this.
+}
+
+// This code should work if you have implemented it correctly
+
+const rusty = new Dog('Rusty', 3);
+const fido = new Dog('Fido', 1);
+
+rusty.bark() // Rusty just barked!
+fido.bark() // Fido just barked!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
