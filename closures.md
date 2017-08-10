@@ -43,7 +43,7 @@ storeOuter(10) // 15
 
 <h4>A couple of things to note here:</h4>
 
-<li>we have to 'return' the inner function for this to work</li>
+<li>We have to 'return' the inner function for this to work</li>
 <li>We can either call the inner function right away by using an extra () or we can store the results of the function in a variable (very similiar to how bind works)</li>
 <li>We do NOT have to give the inner function a name - we can make it anonymous (we just called it 'inner' for learning purposes)</li>
 <br>
@@ -118,7 +118,7 @@ counter1() // 3 - This is not affected by counter2
 count // ReferenceError: count is not defined - because it is private
 
 ```
-
+<br>
 
 <h4>Another Privacy Example</h4>
 
