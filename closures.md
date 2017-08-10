@@ -93,7 +93,7 @@ Because a closure only exists when an inner function makes use of variables defi
 
 <h2 id="private">Private Variables</h2>
 
-<h4>In other languages, there exists support for variables that can not be modified externally, we call those private variables, but in JavaScript we don't have that built in. No worries - closures can help!</h4>
+In other languages, there exists support for variables that can not be modified externally, we call those private variables, but in JavaScript we don't have that built in. No worries - closures can help!
 
 
 ```javascript
@@ -148,6 +148,9 @@ course2.getInstructors() // ['Elie', 'Colt'] - not affected by course1
 
 // We also have NO acess to the instructor variable
 // which makes it private - no one can modify it...you're stuck with Colt and Elie
+
+```
+
 <br>
 <br>
 
