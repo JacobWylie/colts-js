@@ -197,8 +197,6 @@ person.dog.determineContext.call(person); // true
 
 <h2 id="callwild">Using Call in the Wild</h2>
 Let's examine a very common use case
-<br>
-<br>
 
 ```javascript
 
