@@ -1,7 +1,7 @@
 <h1>This</h1>
-- A reserved JavaSctipt keyword 
-- Determined by execution context
-- Determined using four rules (global, object/implicit, explicit, new)
+<li> A reserved JavaSctipt keyword </li>
+<li> Determined by execution context </li>
+<li> Determined using four rules (global, object/implicit, explicit, new) </li>
 <br>
 
 1. [Global Context](#globalcontext)
@@ -42,6 +42,7 @@ whatIsThis(); // window
 
 <h3 id="strictmode">Strict Mode</h3>
 When we enable strict mode and we are not inside a declared object
+<br>
 
 
 ```javascript
@@ -66,10 +67,12 @@ variableInThis(); // TypeError, can't set person on undefined
 whatIsThis() // undefined
 
 ```
+<br>
 
 
 <h2 id="implicitobject">Implicit/Object</h2>
 When the keyword 'this' IS inside of a declared object
+<br>
 
 
 ```javascript
@@ -90,10 +93,12 @@ person.sayHi(); // "Hi Ellie"
 person.determineContext() // true
 
 ```
+<br>
 
 
 <h2 id="nestedobjects">Nested Object</h2>
 What happens when we have a nested object?
+<br>
 
 
 ```javascript
@@ -124,6 +129,7 @@ person.dog.sayHello(); // "Hello undefined"
 person.dog.determineContext(); // false
 
 ```
+<br>
 
 
 <h2 id="explicitbinding">Explicit Binding</h2>
@@ -152,6 +158,7 @@ These methods can only be used by functions <br>
 		<td>No</td>
 	</tr>
 </table>
+<br>
 
 
 <h2 id="fixingcall">Fixing up with Call</h2>
@@ -185,10 +192,12 @@ person.dog.determineContext.call(person); // true
 // Using call worked! Notice that we do NOT invoke sayHello or determineContext method
 
 ```
+<br>
 
 
 <h2 id="callwild">Using Call in the Wild</h2>
 Let's examine a very common use case
+<br>
 
 
 ```javascript
@@ -218,6 +227,7 @@ elie.sayHi(); // "Hi Elie" (But we had to copy and paster the function from abov
 
 ```
 
+
 <h5>Solution</h5>
 
 ```javascript
@@ -239,10 +249,12 @@ colt.sayHi.call(elie) // "Hi Elie"
 // Much better!
 
 ```
+<br>
 
 
 <h2 id="apply">What about Apply?</h2>
 It's almost identical to call - except the parameters!
+<br>
 
 
 ```javascript
