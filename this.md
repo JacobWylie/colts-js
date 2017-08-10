@@ -4,6 +4,7 @@
 <li> Determined using four rules (global, object/implicit, explicit, new) </li>
 <br>
 <h3>Contents</h3>
+
 1. [Global Context](#globalcontext)
     1. [Global Object](#globalobject)
     2. [Strict Mode](#strictmode)
@@ -12,10 +13,14 @@
 4. [Explicit Binding](#explicitbinding)
 5. [Fixing up with Call](#fixingcall)
 6. [Using Call in the Wild](#callwild)
-7. [What about Apply?](#apply)
+7. [What About Apply?](#apply)
+8. [And What About Bind?](#bind)
+9. [Bind in the Wild](#bind-2)
 
 
 <hr>
+<br>
+<br>
 <h2 id="globalcontext">Global Context</h2>
 <h3 id="globalobject">The browser's global object is the window</h3>
 
@@ -80,7 +85,7 @@ When the keyword 'this' IS inside of a declared object
 
 // strict mode does NOT make a difference here
 
-let person = {
+const person = {
 	firstName: "Ellie",
 	sayHi: function() {
 		return `Hi ${this.firstName}`;
@@ -105,7 +110,7 @@ What happens when we have a nested object?
 
 ```javascript
 
-let person = {
+const person = {
 	firstName: "Colt",
 	sayHi: function() {
 		return `Hi ${this.firstName}`;
@@ -164,11 +169,11 @@ These methods can only be used by functions <br>
 <br>
 
 
-<h2 id="fixingcall">Fixing up with Call</h2>
+<h2 id="fixingcall">Fixing up With Call</h2>
 
 ```javascript
 
-let person = {
+const person = {
 	firstName: "Colt",
 	sayHi: function() {
 		return `Hi ${this.firstName}`;
@@ -206,14 +211,14 @@ Let's examine a very common use case
 
 ```javascript
 
-let colt = {
+const colt = {
 	firstName: "Colt",
 	sayHi: function() {
 		return `Hi ${this.firstName}`;
 	}
 }
 
-let elie = {
+const elie = {
 	firstName: "Elie",
 	// Look at all this duplication :(
 	sayHi: function() {
@@ -226,24 +231,25 @@ elie.sayHi(); // "Hi Elie" (But we had to copy and paster the function from abov
 
 // How can we refactor the duplication using call?
 
-// How can we "borrow" the sayHi function from colt
-// and set the value of 'this' to be elie?
+// How can we "borrow" the sayHi function from colt and set the value of 'this' to be elie?
 
 ```
 
 
-<h5>Solution</h5>
+Solution
+<br>
+<br>
 
 ```javascript
 
-let colt = {
+const colt = {
 	firstName: "Colt",
 	sayHi: function() {
 		return `Hi ${this.firstName}`;
 	}
 }
 
-let elie = {
+const elie = {
 	firstName: "Elie"
 }
 
@@ -257,12 +263,117 @@ colt.sayHi.call(elie) // "Hi Elie"
 <br>
 
 
-<h2 id="apply">What about Apply?</h2>
+<h2 id="apply">What About Apply?</h2>
 It's almost identical to call - except the parameters!
 <br>
 <br>
 
 ```javascript
+
+const colt = {
+	firstName: "Colt",
+	sayHi: function() {
+		return `Hi ${this.firstName}`;
+	},
+	addNumbers: function(a, b, c, d) {
+		return `${this.firstName} just calculated ${a + b + c + d}`;
+	}
+}
+
+const elie = {
+	firstName: "Elie"
+}
+
+colt.sayHi() // Hi Colt
+colt.sayHi.apply(elie) // Hi Elie
+
+// well this seems the same...but what happens when we start adding arguments?
+
+colt.addNumbers(1, 2, 3, 4) // Colt just calculated 10
+colt.addNumbers.call(elie, 1, 2, 3, 4) // Elie just calculated 10
+colt.addNumbers.apply(elie, [1, 2, 3, 4]) // Elie just calculated 10
+
+```
+<br>
+<br>
+
+
+<h2 id="bind">And What About Bind?</h2>
+The parameters work like call, but bind returns a function with the context of 'this' bound already!
+<br>
+<br>
+
+```javascript
+
+const colt = {
+	firstName: 'Colt',
+	sayHi: function() {
+		return `Hi ${this.firstName}`;
+	},
+	addNumbers: function(a, b, c, d) {
+		return `${this.firstName} just calculated ${a + b + c + d}`;
+	}
+}
+
+const elie = {
+	firstName: 'Elie'
+}
+
+const elieCalc = colt.addNumbers.bind(elie, 1, 2, 3, 4); // function() {}...
+elieCalc(); // Elie just calculated 10
+
+// With bind - we do not need to know all the arguments up front!
+
+const elieCalc2 = colt.addNumbers.bind(elie, 1, 2); // function() {}...
+elieCalc2(3, 4); // Elie just calculated 10
+
+```
+<br>
+<br>
+
+
+<h3 id="bind-2">Bind in the Wild</h3>
+Very commonly we lose context of 'this', but in functions that we do not want to execute right away!
+<br>
+<br>
+
+```javascript
+
+const colt = {
+	firstName: 'Colt',
+	sayHi: function() {
+		setTimeout(function() {
+			console.log(`Hi ${this.firstName`);
+		}, 1000)
+	}
+}
+
+colt.sayHi(); // Hi undefined (1000 milliseconds later)
+// setTimeout() is a window method so 'this' is in the global scope
+
+```
+
+Use bind to set the correct context of 'this'
+<br>
+<br>
+
+```javascript
+
+const colt = {
+	firstName: 'Colt',
+	sayHi: function() {
+		setTimeout(function() {
+			console.log(`Hi ${this.firstName`);
+		}.bind(this), 1000)
+	}
+}
+
+colt.sayHi(); // Hi Colt (1000 milliseconds later)
+
+```
+
+
+
 
 
 
