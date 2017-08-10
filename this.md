@@ -22,7 +22,6 @@
 
 <hr>
 <br>
-<br>
 <h2 id="globalcontext">Global Context</h2>
 <h3 id="globalobject">The browser's global object is the window</h3>
 
@@ -372,6 +371,9 @@ const colt = {
 colt.sayHi() // Hi Colt (1000 milliseconds later)
 
 ```
+<br>
+<br>
+
 
 <h2 id="new">The 'new' keyword</h2>
 We can set the context of the keyword 'this' using the 'new' keyword - it does quite a bit more as well which we will discuss further when we talk about OOP
@@ -391,6 +393,9 @@ elie.firstName // 'Elie'
 elie.lastName // 'Schoppik'
 
 ```
+<br>
+<br>
+
 
 <h2 id="recap">Recap</h2>
 <br>
