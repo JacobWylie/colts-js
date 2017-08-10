@@ -1,4 +1,4 @@
-<h1>This</h1>
+<h1>Keyword 'This'</h1>
 <li> A reserved JavaSctipt keyword </li>
 <li> Determined by execution context </li>
 <li> Determined using four rules (global, object/implicit, explicit, new) </li>
@@ -16,6 +16,8 @@
 7. [What About Apply?](#apply)
 8. [And What About Bind?](#bind)
 9. [Bind in the Wild](#bind-2)
+10. [The 'new' Keyword](#new)
+11. [Recap](#recap)
 
 
 <hr>
@@ -332,7 +334,7 @@ elieCalc2(3, 4) // Elie just calculated 10
 <br>
 
 
-<h3 id="bind-2">Bind in the Wild</h3>
+<h2 id="bind-2">Bind in the Wild</h2>
 Very commonly we lose context of 'this', but in functions that we do not want to execute right away!
 <br>
 <br>
@@ -371,8 +373,33 @@ colt.sayHi() // Hi Colt (1000 milliseconds later)
 
 ```
 
+<h2 id="new">The 'new' keyword</h2>
+We can set the context of the keyword 'this' using the 'new' keyword - it does quite a bit more as well which we will discuss further when we talk about OOP
+<br>
+<br>
 
+```javascript
 
+function Person(firstName, lastName) {
+	this.firstName = firstName
+	this.lastName = lastName
+}
+
+const elie = new Person('Elie', 'Schoppik');
+
+elie.firstName // 'Elie'
+elie.lastName // 'Schoppik'
+
+```
+
+<h2 id="recap">Recap</h2>
+<br>
+<li>The keyword 'this' is a reserved keyword in JavaScript and its value is determined at execution</li>
+<li>It is either set using the global context, object binding, explicit binding, or the new keyword</li>
+<li>When set in the global context in a function, it is either the global object(window if in the brwoser) or undefined (if we are using 'strict mode')</li>
+<li>When the keyword 'this' is inside of a declared object, the value of the keyword 'this' will always be the closest parent object</li>
+<li>To explicitly set the value of the keyword 'this', we use call, apply, or bind</li>
+<li>We can also use the 'new' keyword to set the context of 'this', which we will discuss when we talk about Object Orientated Programming</li>
 
 
 
