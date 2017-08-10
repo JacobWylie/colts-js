@@ -5,7 +5,7 @@
 <li>Use a closure to emulate private variables</li>
 <li>List use cases for closures in the real world</li>
 
-<h3>Closure Defined</h3>
+<h3>Definition</h3>
 <li>A closure is a function that makes use of variables defined in outer functions that have previously returned</li>
 <br>
 
