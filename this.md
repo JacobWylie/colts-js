@@ -39,9 +39,10 @@ whatIsThis(); // window
 
 ```
 
+
 <h3 id="strictmode">Strict Mode</h3>
 When we enable strict mode and we are not inside a declared object
-<br>
+
 
 ```javascript
 
@@ -66,9 +67,10 @@ whatIsThis() // undefined
 
 ```
 
+
 <h2 id="implicitobject">Implicit/Object</h2>
 When the keyword 'this' IS inside of a declared object
-<br>
+
 
 ```javascript
 
@@ -89,9 +91,10 @@ person.determineContext() // true
 
 ```
 
+
 <h2 id="nestedobjects">Nested Object</h2>
 What happens when we have a nested object?
-<br>
+
 
 ```javascript
 
@@ -122,6 +125,7 @@ person.dog.determineContext(); // false
 
 ```
 
+
 <h2 id="explicitbinding">Explicit Binding</h2>
 Choose what we want the context of 'this' to be using call, apply, or bind <br>
 These methods can only be used by functions <br>
@@ -148,6 +152,7 @@ These methods can only be used by functions <br>
 		<td>No</td>
 	</tr>
 </table>
+
 
 <h2 id="fixingcall">Fixing up with Call</h2>
 
@@ -181,9 +186,10 @@ person.dog.determineContext.call(person); // true
 
 ```
 
+
 <h2 id="callwild">Using Call in the Wild</h2>
 Let's examine a very common use case
-<br>
+
 
 ```javascript
 
@@ -234,9 +240,10 @@ colt.sayHi.call(elie) // "Hi Elie"
 
 ```
 
+
 <h2 id="apply">What about Apply?</h2>
 It's almost identical to call - except the parameters!
-<br>
+
 
 ```javascript
 
